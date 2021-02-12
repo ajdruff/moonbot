@@ -1,0 +1,5 @@
+{
+    "key": "COINBASE_API_KEY",
+    "secret": "COINBASE_API_SECRET",
+    "passphrase": "COINBASE_API_PASSPHRASE"
+}
