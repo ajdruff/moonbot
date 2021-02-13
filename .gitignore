@@ -1,5 +1,7 @@
 node_modules/
 dist/
 *.code-workspace
-config.json
+config*.json
 test.ts
+!config-sample.json
+README-dev.md
