@@ -1,7 +1,7 @@
 import { Moonbot } from "./moonbot.js";
 
 const options = {
-  live: true,
+  live: false,
   dryRun: false,
 };
 

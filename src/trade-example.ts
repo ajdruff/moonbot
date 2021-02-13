@@ -1,8 +1,8 @@
 import { Moonbot } from "./moonbot.js";
 
 const options = {
-  live: false,
-  dryRun: true,
+  live: true,
+  dryRun: false,
 };
 
 const mb = new Moonbot(options);

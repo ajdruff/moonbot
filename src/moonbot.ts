@@ -1,4 +1,4 @@
-import config from "./config.json";
+import configs from "./config.json";
 import options_file from "./options.json";
 const CoinbasePro = require("coinbase-pro");
 const { JSONPath } = require("jsonpath-plus");
@@ -16,16 +16,21 @@ const XOptionsDefaults: IXOptions = {
 class Moonbot {
   cbClient: any = {};
   orderBudget: number = 0;
+  config: any;
 
   private options: IXOptions;
 
   constructor(XOptions?: IXOptions) {
     this.options = { ...XOptionsDefaults, ...XOptions };
-
+    if (this.options.live) {
+      this.config = configs.live;
+    } else {
+      this.config = configs.sandbox;
+    }
     this.cbClient = new CoinbasePro.AuthenticatedClient(
-      config.key,
-      config.secret,
-      config.passphrase,
+      this.config.key,
+      this.config.secret,
+      this.config.passphrase,
       this.getBaseURL()
     );
   }
@@ -133,10 +138,19 @@ class Moonbot {
   }
 
   getSecret() {
-    return config.secret;
+    return this.config.secret;
   }
   getKey() {
-    return config.key;
+    return this.config.key;
+  }
+
+  async getAccounts() {
+    try {
+      const data = await this.cbClient.getAccounts();
+      return data;
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 }
 
