@@ -2,7 +2,7 @@ import { Moonbot } from "./moonbot.js";
 
 const options = {
   live: false,
-  dryRun: false,
+  dryRun: true,
 };
 
 const mb = new Moonbot(options);
@@ -11,7 +11,6 @@ const mb = new Moonbot(options);
 //mb.placeOrder(50);
 
 if (true) {
-  mb.cancelOrders();
   console.log("placing an order:");
-  mb.placeOrder(50);
+  mb.buyBTCLow(50);
 }

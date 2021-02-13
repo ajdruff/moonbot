@@ -4,7 +4,8 @@
   "description": "Simple Dollar Cost Averaging trading bot.Currently supports btc on coinbase.",
   "main": "app.js",
   "scripts": {
-    "test": "node app.js"
+    "test": "node dist/example-buy.js",
+    "demo": "node dist/example-buy.js"
   },
   "repository": {
     "type": "git",

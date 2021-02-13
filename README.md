@@ -25,26 +25,35 @@ Defaults are 'failsafe', so will pull from Sandbox environment using Dry Run mod
 
 Dry Run will call any API that only reads from the API but will not perform any writes.
 
+Import
+
     import { Moonbot } from "./moonbot.js";
 
     const mb = new Moonbot();
 
-    mb.placeOrder(50);
+Example #1:
 
-See example-trade.ts for an example.
+    mb.buyBTCLow(50); //places a limit order for $50 of BTC at the last 24 hour low
+
+Example #2
+
+    mb.buyBTC(50,45000); //places a limit order for $50 of BTC at $45,000
+
+See example.ts files for more examples
 
 ## Running the example app
 
-    npm install
-    tsc;node dist/trade-example.ts
+    npm install && tsc
+    npm run demo
+    #OR  node dist/example-buy.js
 
 output:
 
-    dryRun:buy with parameters: {"price":"46750","size":"0.00106952","product_id":"BTC-USD"}
-
+    placing an order:
+    dryRun:buy with parameters: {"price":"46284.53","size":"0.00108027","product_id":"BTC-USD"}
+    options:{"live":false,"dryRun":true}
 
 ToDO:
 
-* Add support for options file.
-* Check to see if there is any money left to buy!
-* Make exceptions when cancelling for trades made 
+- Add support for options file.
+- Make exceptions when cancelling for trades made

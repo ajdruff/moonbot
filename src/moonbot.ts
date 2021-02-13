@@ -44,15 +44,41 @@ class Moonbot {
     }
   }
 
-  async placeOrder(orderBudget: number) {
+  async buyBTCLow(orderCost: number) {
+    var that = this;
     const stats = await this.getStats();
-    console.log(stats.low);
+
     const buyParams = {
       price: stats.low, // USD
-      size: this.round(orderBudget / stats.low, 8), // BTC
+      size: this.round(orderCost / stats.low, 8), // BTC
       product_id: "BTC-USD",
     };
-    console.log(buyParams);
+
+    const usdAccount = await that.getUSDAccount();
+    // console.log("funds available: " + usdAccount.available);
+    const fundsAvailable = usdAccount.available;
+    if (orderCost > fundsAvailable) {
+      console.log("insufficient funds, refusing to proceed with order");
+      console.log(usdAccount.available);
+      return;
+    }
+
+    if (this.options.dryRun) {
+      console.log("dryRun:buy with parameters: " + JSON.stringify(buyParams));
+      console.log("options:" + JSON.stringify(this.options));
+    } else {
+      this.cbClient.buy(buyParams, this.placeOrderCallback);
+    }
+  }
+
+  async buyBTC(orderCost: number, BTCPrice: number) {
+    const stats = await this.getStats();
+
+    const buyParams = {
+      price: BTCPrice, // USD
+      size: this.round(orderCost / BTCPrice, 8), // BTC
+      product_id: "BTC-USD",
+    };
     if (this.options.dryRun) {
       console.log("dryRun:buy with parameters: " + JSON.stringify(buyParams));
       console.log("options:" + JSON.stringify(this.options));
@@ -144,6 +170,26 @@ class Moonbot {
     return this.config.key;
   }
 
+  async getUSDAccount() {
+    try {
+      var that = this;
+
+      const result = await this.getAccounts().then(function (data) {
+        let accountUSD = JSONPath({
+          //   path: "..id[?(@.type=='ach_bank_account')]",
+          //path: "$..id[?(@.currency=='USD')]",
+          path: "$.[?(@.currency=='USD')]",
+          json: data,
+        });
+        // console.log(accountUSD);
+        //let accountIdUSD = JSONPath({ path: "$..id", json: accountUSD });
+        return accountUSD[0];
+      });
+      return result;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
   async getAccounts() {
     try {
       const data = await this.cbClient.getAccounts();
