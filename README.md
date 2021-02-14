@@ -12,9 +12,9 @@ Use at your own risk!
 
     git clone https://github.com/ajdruff/moonbot.git
     cd moonbot
-    mkdir dist -p && cp src/config-example.json dist/config.json
+    cp src/config-example.json src/config.json
     npm install && tsc
-    # edit config.json with your Coinbase API keys
+    # edit dist/config.json with your Coinbase API keys
 
 ## Options
 

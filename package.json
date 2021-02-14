@@ -1,5 +1,5 @@
 {
-  "name": "moonbot-dca",
+  "name": "moonbot",
   "version": "1.0.0",
   "description": "Simple Dollar Cost Averaging trading bot.Currently supports btc on coinbase.",
   "main": "example-buy.ts",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/ajdruff/moonbot-dca.git"
+    "url": "git+ssh://git@github.com/ajdruff/moonbot.git"
   },
   "keywords": [
     "bitcoin",
