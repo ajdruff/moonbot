@@ -2,10 +2,10 @@
   "name": "moonbot-dca",
   "version": "1.0.0",
   "description": "Simple Dollar Cost Averaging trading bot.Currently supports btc on coinbase.",
-  "main": "app.js",
+  "main": "example-buy.ts",
   "scripts": {
-    "test": "node dist/example-buy.js",
-    "demo": "node dist/example-buy.js"
+    "test": "tsc && node dist/example-buy.js",
+    "demo": "tsc && node dist/example-buy.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
   "devDependencies": {
     "@tsconfig/node14": "^1.0.0",
     "@tsconfig/recommended": "^1.0.1",
-    "@types/node": "^14.14.26"
+    "@types/node": "^14.14.27"
   },
   "dependencies": {
     "coinbase-pro": "^0.9.0",
