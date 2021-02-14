@@ -10,7 +10,11 @@ Use at your own risk!
 
 ## Setup
 
-    cp config-sample.json config.json
+    git clone git@github.com:ajdruff/moonbot.git
+    cd moonbot
+    npm install && tsc
+    cp dist/config-example.json dist/config.json
+    # edit config.json with your Coinbase API keys
 
 ## Options
 
@@ -19,11 +23,18 @@ Use at your own risk!
     dryRun: true,
     };
 
+> - live: false - run in coinbase sandbox,otherwise live
+> - dryRun:true; instead of submitting trades, outputs request values
+
 ## Usage
 
 Defaults are 'failsafe', so will pull from Sandbox environment using Dry Run mode.
 
 Dry Run will call any API that only reads from the API but will not perform any writes.
+
+This is a simple library that you can use to build your own bot.
+
+Create your Node.js file, example.tsc
 
 Import
 
@@ -43,7 +54,6 @@ See example.ts files for more examples
 
 ## Running the example app
 
-    npm install && tsc
     npm run demo
     #OR  node dist/example-buy.js
 
