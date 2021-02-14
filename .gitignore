@@ -3,5 +3,5 @@ dist/
 *.code-workspace
 config*.json
 test.ts
-!config-sample.json
+!config-example.json
 README-dev.md

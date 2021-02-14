@@ -1,0 +1,12 @@
+{
+    "live": {
+        "key": "COINBASE_API_KEY",
+        "secret": "COINBASE_API_SECRET",
+        "passphrase": "COINBASE_API_PASSPHRASE"
+    },
+    "sandbox": {
+        "key": "SANDBOX_COINBASE_API_KEY",
+        "secret": "SANDBOX_COINBASE_API_SECRET",
+        "passphrase": "SANDBOX_COINBASE_API_PASSPHRASE"
+    }
+}

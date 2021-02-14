@@ -8,12 +8,12 @@ It currently supports purchasing Bitcoin on Coinbase.
 
 Use at your own risk!
 
-## Setup
+## Installation
 
-    git clone git@github.com:ajdruff/moonbot.git
+    git clone https://github.com/ajdruff/moonbot.git
     cd moonbot
+    mkdir dist -p && cp src/config-example.json dist/config.json
     npm install && tsc
-    cp dist/config-example.json dist/config.json
     # edit config.json with your Coinbase API keys
 
 ## Options
